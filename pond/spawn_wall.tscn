@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://pond/spawn_wall.gd" type="Script" id=1]
+[ext_resource path="res://assets/panel2.png" type="Texture" id=2]
+[ext_resource path="res://assets/mark.png" type="Texture" id=3]
+
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 38.1422, 236.099 )
+
+[node name="spawn_wall" type="Area2D" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 2
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+scale = Vector2( 0.209167, 1 )
+texture = ExtResource( 2 )
+offset = Vector2( -250, 0 )
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( -52, 0 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="spawner0" type="Position2D" parent="." index="2" groups=[
+"spawner",
+]]
+
+editor/display_folded = true
+position = Vector2( 50, -125 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="spawner0" index="0"]
+
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="spawner1" type="Position2D" parent="." index="3" groups=[
+"spawner",
+]]
+
+editor/display_folded = true
+position = Vector2( 50, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="spawner1" index="0"]
+
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="spawner2" type="Position2D" parent="." index="4" groups=[
+"spawner",
+]]
+
+editor/display_folded = true
+position = Vector2( 50, 125 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="spawner2" index="0"]
+
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[connection signal="body_entered" from="." to="." method="_on_spawn_wall_body_entered"]
+
+

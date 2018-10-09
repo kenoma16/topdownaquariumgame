@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://pond/environment.gd" type="Script" id=1]
+[ext_resource path="res://assets/pond1.png" type="Texture" id=2]
+[ext_resource path="res://pond/spawn_wall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://interface/env_ui.tscn" type="PackedScene" id=4]
+
+[node name="environment" type="Node"]
+
+script = ExtResource( 1 )
+can_spawn = true
+time_interval = 5.0
+capacity = 10
+
+[node name="spawn" type="Timer" parent="." index="0"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="background" type="Sprite" parent="." index="1"]
+
+position = Vector2( 286.999, 521.129 )
+texture = ExtResource( 2 )
+
+[node name="spawners" type="Node2D" parent="." index="2"]
+
+editor/display_folded = true
+z_as_relative = false
+_sections_unfolded = [ "Z Index" ]
+
+[node name="spawn_wall" parent="spawners" index="0" instance=ExtResource( 3 )]
+
+position = Vector2( -140, 100 )
+
+[node name="spawn_wall6" parent="spawners" index="1" instance=ExtResource( 3 )]
+
+position = Vector2( 459.69, -127.949 )
+rotation = 1.5708
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="spawn_wall7" parent="spawners" index="2" instance=ExtResource( 3 )]
+
+position = Vector2( 72.1359, -123.848 )
+rotation = 1.5708
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="spawn_wall3" parent="spawners" index="3" instance=ExtResource( 3 )]
+
+position = Vector2( -140, 490 )
+
+[node name="spawn_wall8" parent="spawners" index="4" instance=ExtResource( 3 )]
+
+position = Vector2( -140, 890 )
+
+[node name="spawn_wall2" parent="spawners" index="5" instance=ExtResource( 3 )]
+
+position = Vector2( 679.872, 71.4707 )
+rotation = 3.14159
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="spawn_wall4" parent="spawners" index="6" instance=ExtResource( 3 )]
+
+position = Vector2( 671.67, 908.096 )
+rotation = 3.14159
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="spawn_wall10" parent="spawners" index="7" instance=ExtResource( 3 )]
+
+position = Vector2( 675.771, 479.531 )
+rotation = 3.14159
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="spawn_wall5" parent="spawners" index="8" instance=ExtResource( 3 )]
+
+position = Vector2( 48.3022, 1117.25 )
+rotation = -1.5708
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="spawn_wall9" parent="spawners" index="9" instance=ExtResource( 3 )]
+
+position = Vector2( 448.16, 1123.4 )
+rotation = -1.5708
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="env_ui" parent="." index="3" instance=ExtResource( 4 )]
+
+[connection signal="timeout" from="spawn" to="." method="_on_spawn_timeout"]
+
+

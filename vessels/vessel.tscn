@@ -1,0 +1,24 @@
+[gd_scene format=2]
+
+[node name="vessel" type="Node2D"]
+
+[node name="water" type="Sprite" parent="." index="0"]
+
+[node name="edges" type="StaticBody2D" parent="." index="1"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="design" type="Sprite" parent="edges" index="0"]
+
+[node name="body" type="CollisionPolygon2D" parent="edges" index="1"]
+
+build_mode = 0
+polygon = PoolVector2Array(  )
+
+

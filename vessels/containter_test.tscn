@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://vessels/vessel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://vessels/containter_test.gd" type="Script" id=2]
+[ext_resource path="res://assets/container.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 130.872
+
+[node name="container_test" instance=ExtResource( 1 )]
+
+script = ExtResource( 2 )
+
+[node name="edges" parent="." index="1"]
+
+collision_layer = 2
+collision_mask = 2
+_sections_unfolded = [ "Collision" ]
+
+[node name="design" parent="edges" index="0"]
+
+texture = ExtResource( 3 )
+
+[node name="body" parent="edges" index="1"]
+
+polygon = PoolVector2Array( 19.4513, -127.283, 40, -120, 54.1741, -117.77, 80.8108, -102.311, 99.5992, -83.5225, 115.534, -60.4532, 132.182, -68.0637, 114.82, -96.1273, 90.5618, -119.434, 47.7528, -142.504, -4.33147, -149.401, -55.2266, -139.412, -90.6629, -118.483, -121.818, -85.9008, -141.558, -44.5187, -146.79, 13.5112, -121.343, 86.5243, -72.588, 130.285, -15.7472, 148.835, 57.2659, 138.846, 111.015, 99.6048, 141.457, 47.5206, 147.878, -17.6442, 134.084, -65.6854, 116.247, -59.5019, 130.041, -26.9195, 130.041, 20.8839, 120.766, 52.5149, 104.831, 78.9138, 76.5299, 105.313, 37.764, 123.625, 11.603, 128.62, -26.9251, 126.242, -60.4588, 116.253, -94.9438, 91.2808, -120.154, 56.7958, -130.618, 22.7865, -132.521, -15.0281, -119.44, -54.7453, -96.6086, -89.2304, -57.1292, -116.105, -16.4607, -128.234 )
+
+[node name="inside" type="Area2D" parent="." index="2"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 2
+collision_mask = 2
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="bottom" type="CollisionShape2D" parent="inside" index="0"]
+
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="inside" to="." method="_on_inside_body_entered"]
+
+[connection signal="body_exited" from="inside" to="." method="_on_inside_body_exited"]
+
+

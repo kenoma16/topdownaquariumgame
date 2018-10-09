@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://vessels/test_area.gd" type="Script" id=1]
+[ext_resource path="res://assets/table_top.png" type="Texture" id=2]
+[ext_resource path="res://vessels/tester.tscn" type="PackedScene" id=3]
+[ext_resource path="res://interface/menu_ui.tscn" type="PackedScene" id=4]
+
+[node name="test_area" type="Node"]
+
+script = ExtResource( 1 )
+
+[node name="table" type="Sprite" parent="." index="0"]
+
+position = Vector2( 288.527, 509.293 )
+scale = Vector2( 0.853564, 0.847856 )
+texture = ExtResource( 2 )
+
+[node name="tester" parent="." index="1" instance=ExtResource( 3 )]
+
+position = Vector2( 289.759, 212.218 )
+
+[node name="menu_ui" parent="." index="2" instance=ExtResource( 4 )]
+
+margin_left = 5.0
+margin_top = 8.0
+margin_right = 105.0
+margin_bottom = 528.0
+_sections_unfolded = [ "Rect" ]
+
+
