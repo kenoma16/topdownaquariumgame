@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://animals/animal.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/realism/giant_stonefly.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 20.6486
+height = 98.2322
+
+[node name="giant_stonefly" index="0" instance=ExtResource( 1 )]
+
+icon = ExtResource( 2 )
+species = "giant_stonefly"
+max_speed = 50
+rotation_speed = 0.5
+
+[node name="body" parent="." index="0"]
+
+texture = ExtResource( 2 )
+
+[node name="collision" parent="." index="1"]
+
+position = Vector2( 23.8329, -12.3137 )
+rotation = 1.5708
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="front" parent="." index="2"]
+
+enabled = true
+cast_to = Vector2( 110, 0 )
+
+[node name="right" parent="." index="3"]
+
+enabled = true
+cast_to = Vector2( 50, 50 )
+
+[node name="left" parent="." index="4"]
+
+enabled = true
+cast_to = Vector2( 50, -50 )
+
+

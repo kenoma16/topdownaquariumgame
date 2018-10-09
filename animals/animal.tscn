@@ -1,0 +1,92 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://animals/animal.gd" type="Script" id=1]
+
+[node name="animal" type="KinematicBody2D"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 3
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
+icon = null
+species = null
+max_speed = null
+rotation_speed = null
+max_health = null
+max_age = null
+min_size = null
+max_size = null
+
+[node name="body" type="Sprite" parent="." index="0"]
+
+[node name="collision" type="CollisionShape2D" parent="." index="1"]
+
+visible = false
+
+[node name="front" type="RayCast2D" parent="." index="2"]
+
+enabled = false
+exclude_parent = true
+cast_to = Vector2( 0, 50 )
+collision_mask = 1
+
+[node name="right" type="RayCast2D" parent="." index="3"]
+
+enabled = false
+exclude_parent = true
+cast_to = Vector2( 0, 50 )
+collision_mask = 1
+
+[node name="left" type="RayCast2D" parent="." index="4"]
+
+enabled = false
+exclude_parent = true
+cast_to = Vector2( 0, 50 )
+collision_mask = 1
+
+[node name="touch" type="TouchScreenButton" parent="." index="5"]
+
+normal = null
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = ""
+visibility_mode = 0
+
+[node name="age" type="Timer" parent="." index="6"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = true
+
+[node name="growth" type="Timer" parent="." index="7"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = true
+
+[node name="metabolism" type="Timer" parent="." index="8"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = true
+
+[connection signal="pressed" from="touch" to="." method="_on_touch_pressed"]
+
+[connection signal="released" from="touch" to="." method="_on_touch_released"]
+
+[connection signal="timeout" from="age" to="." method="age"]
+
+[connection signal="timeout" from="growth" to="." method="growth"]
+
+[connection signal="timeout" from="metabolism" to="." method="metabolism"]
+
+
